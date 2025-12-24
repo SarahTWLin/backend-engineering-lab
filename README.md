@@ -1,2 +1,77 @@
 # backend-fundamentals
 Backend Fundamentals with Node.js, Java Springboot, and Python FastAPI with SQL polishing
+
+## Node.js Backend API
+### Design
+
+#### Domain
+The backend server serves RESTFUL APIs for a task management system, which allows the client to:
+
+- Create a task
+- Get a task based on specific task ID or a list of tasks
+- Update a task's information based on specific task ID
+- Delete a task based on specific task ID
+
+The task management consists of the following object(s):
+
+- **Task**: a scoped activity which a user will complete
+
+
+     
+| Field  | Description | Type | Example | 
+| --- | --- | --- | --- |
+|   id | Unique number to differentiate each **Task** object | `int` | 1
+| title | Name of the **Task** object | `string` | Task1
+| description | Elaborated details of the **Task** object | `string` | To work at a consistent pace
+| status | Completion status of **Task** object | `string` | `todo`, `in-progress`, `done`
+| createdAt | When the **Task** object was created | `datetime` | `2025-12-25 12:00:00`
+| updatedAt | When the **Task** object (details) were updated | `datetime` | `2025-12-25 12:01:00`
+
+#### API Endpoints
+
+The backend server will serve the following endpoints:
+
+##### `POST /tasks`
+- **Description**: Creates a new **Task** object
+- **Body-Content**: 
+
+    ```json
+    {
+        "title": "Task1",
+        "description": "First task",
+        "status": "[todo|in-progress|done]",
+        "createdAt": "<current time>",
+        "updatedAt": "<updated time>"
+    }
+    ```
+- **Returns**:
+    - `200`: "Success. Task created."
+    - `500`: "Internal server error."
+    - `400`: "Bad request."
+
+##### `GET /tasks`
+- **Description**: Gets the list of **Task** objects that the user created
+- **Returns**:
+    - `200`: "Success"
+
+        Example output:
+
+        ```json
+        [
+            {
+                "id": 1,
+                "title": "Task1",
+                "description": "First task",
+                "status": "todo"
+            },
+            {
+                "id": 2,
+                "title": "Task2",
+                "description": "Second task",
+                "status": "in-progress"
+            }
+        ]
+        ```
+
+    - `500`: "Internal server error."
+    
