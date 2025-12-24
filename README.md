@@ -1,7 +1,13 @@
 # backend-fundamentals
-Backend Fundamentals with Node.js, Java Springboot, and Python FastAPI with SQL polishing
+Backend engineering with Node.js, Java Springboot, and Python FastAPI with SQL polishing. Scope of work covers:
 
-## Node.js Backend API
+- Design and implementation of RESTful CRUD APIs using Node.js (Express), Java (SpringBoot), and Python (FastAPI)
+- Focus on request validation, error handling, and layered service architecture
+- Integrate SQL-backend persistence with filtering and pagination to support scalable read operations
+
+## Node.js Backend API 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
 ### Design
 
 #### Domain
