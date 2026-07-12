@@ -8,8 +8,17 @@ const taskRouter = require("./routes/tasks");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+app.get("/healthcheck", (req, res) => {
+    res.status(200).send({
+        status: "OK"
+    })
+});
+
 app.use("/tasks/v1/", taskRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`);
 })
+
+module.exports = app;
