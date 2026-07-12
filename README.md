@@ -137,6 +137,7 @@ The backend server will serve the following endpoints:
 
 ```css
 src/
+├── app.js
 ├── index.js
 ├── routes/
 |   └── taskRouter.js
