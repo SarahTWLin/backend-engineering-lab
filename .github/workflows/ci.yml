@@ -43,3 +43,8 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t backend-service ./backend-service-nodejs
+
+      - name: Cleanup containers
+        if: always()
+        run: |
+          docker-compose --env-file backend-service-nodejs/.env down -v
