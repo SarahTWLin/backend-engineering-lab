@@ -20,6 +20,13 @@ jobs:
         with:
           node-version: 22
 
+      - name: Create env file
+        run: |
+          echo "DB_USER=${{ secrets.DB_USER }}" >> backend-service-nodejs/.env
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> backend-service-nodejs/.env
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> backend-service-nodejs/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> backend-service-nodejs/.env
+
       - name: Install dependencies
         working-directory: ./backend-service-nodejs
         run: npm install
