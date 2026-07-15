@@ -2,10 +2,10 @@ const express = require("express");
 const taskRouter = express.Router();
 const taskControllers = require("../controllers/tasks-controller");
 
-taskRouter.get('/', (req, res, next) => { 
+taskRouter.get('/', async (req, res, next) => { 
     
     try {
-        const taskList = taskControllers.getTaskList();
+        const taskList = await taskControllers.getTaskList();
 
         res.status(200).send({
             tasks: taskList

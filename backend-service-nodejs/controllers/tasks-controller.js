@@ -1,3 +1,5 @@
+const prisma = require('../prisma/prisma');
+
 // To refine: database connection
 const sampleData = [
     {
@@ -14,8 +16,9 @@ const sampleData = [
     }
 ]
 
-function getTaskList() {
-    return sampleData;
+async function getTaskList() {
+    const tasks = await prisma.task.findMany();
+    return tasks;
 }
 
 function getTaskById(taskId) {
