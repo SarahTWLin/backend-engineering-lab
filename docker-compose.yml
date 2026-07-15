@@ -1,5 +1,8 @@
 services:
   backend:
+    volumes:
+      - ./backend-service-nodejs:/app
+      - /app/node_modules
     build: 
       context: ./backend-service-nodejs
       dockerfile: Dockerfile
