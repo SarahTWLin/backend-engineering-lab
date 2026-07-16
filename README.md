@@ -1,16 +1,14 @@
 # backend-fundamentals
+## About
 Backend engineering with Node.js, Java Springboot, and Python FastAPI with SQL polishing. Scope of work covers:
 
 - Design and implementation of RESTful CRUD APIs using Node.js (Express), Java (SpringBoot), and Python (FastAPI)
 - Focus on request validation, error handling, and layered service architecture
 - Integrate SQL-backend persistence with filtering and pagination to support scalable read operations
 
-## Node.js Backend API 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+## Design
 
-### Design
-
-#### Domain
+### Domain
 The backend server serves RESTFUL APIs for a task management system, which allows the client to:
 
 - Create a task
@@ -33,11 +31,11 @@ The task management consists of the following object(s):
 | createdAt | When the **Task** object was created | `datetime` | `2025-12-25 12:00:00`
 | updatedAt | When the **Task** object (details) were updated | `datetime` | `2025-12-25 12:01:00`
 
-#### API Endpoints
+### API Endpoints
 
 The backend server will serve the following endpoints:
 
-##### `POST /tasks`
+#### `POST /tasks`
 - **Description**: Creates a new **Task** object
 - **Body-Content**: 
 
@@ -56,7 +54,7 @@ The backend server will serve the following endpoints:
     - `500`: "Internal server error."
     
 
-##### `GET /tasks`
+#### `GET /tasks`
 - **Description**: Gets the list of **Task** objects that the user created
 - **Returns**:
     - `200`: "Success"
@@ -83,7 +81,7 @@ The backend server will serve the following endpoints:
     - `500`: "Internal server error."
     
 
-##### `GET /tasks/:id`
+#### `GET /tasks/:id`
 - **Description**: Gets a specific **Task** object with given id
 - **Param**: `id` 
 - **Returns**:
@@ -105,7 +103,7 @@ The backend server will serve the following endpoints:
     - `500`: "Internal server error."
 
 
-##### `PUT /tasks/:id`
+#### `PUT /tasks/:id`
 - **Description**: Updates field(s) of specific **Task** object with given id
 - **Param**: `id` 
 - **Body-Content** (updateable fields): 
@@ -123,7 +121,7 @@ The backend server will serve the following endpoints:
     - `404`: "Task not found."
     - `500`: "Internal server error."
 
-##### `DELETE /tasks/:id`
+#### `DELETE /tasks/:id`
 - **Description**: Deletes a specific **Task** object with given id
 - **Param**: `id` 
 - **Returns**:
@@ -132,8 +130,17 @@ The backend server will serve the following endpoints:
     - `404`: "Task not found."
     - `500`: "Internal server error."
 
+### Tech Stack
+| Layer  | Technology | Purpose | 
+| --- | --- | --- | 
+| Framework | ① Express.js <br> ② Spring Boot <br>  ③ FastAPI | Backend frameworks |
+| Language | ① Javascript <br> ② Java <br> ③ Python | - |
+| ORM | ① Prisma | ① Database toolkit for Node.js |
+| Database | PostgreSQL | Store `Task` data |
+| Test Suites | ① Jest | ① Testing framework for Javascript
 
-#### Code Structure
+## Project Structure
+Structure here implies overall folder layout of implemented API frameworks.
 
 ```css
 backend-fundamentals
@@ -170,3 +177,23 @@ backend-fundamentals
 └── README.md
 
 ```
+
+## Node.js Backend API 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+
+
+### Getting Started
+
+#### Prerequisites
+- Node.js >= v18.19.1
+- npm >= 10.9.3
+
+#### 1. Clone & Install
+
+```bash
+git clone git@github.com:SarahTWLin/backend-fundamentals.git
+cd backend-service-nodejs/
+npm install
+```
+
