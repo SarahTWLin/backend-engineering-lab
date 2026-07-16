@@ -34,11 +34,10 @@ const getTask = (req, res, next) => {
 const createTask = (req, res, next) => {
     try {
         const newTask = req.body.task;
-        const newTaskCreated = taskControllers.createTask(newTask);
+        const results = taskControllers.createTask(newTask);
 
-        
-        res.status(200).send({
-            status: "Task created"
+        res.status(201).send({
+            task: results
         });
     }
     catch (err) {

@@ -26,10 +26,14 @@ async function getTaskById(taskId) {
     return tasks.find((task) => task.id === taskId);
 }
 
-function createTask(task) {
-    sampleData.push(
-        task
-    );
+async function createTask(task) {
+    const result = await prisma.task.create({
+        data: {
+            ...task
+        }
+    });
+    
+    return result;
 }
 
 
