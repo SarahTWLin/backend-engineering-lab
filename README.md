@@ -1,10 +1,22 @@
 # backend-fundamentals
+
+
+## Table of Contents
+
+- [About](#About)
+- [Design](#Design)
+- [Tech Stack](#Tech-Stack)
+- [Project Structure](#Project-Structure)
+- [Getting Started](#Getting-Started)
+
+
 ## About
 Backend engineering with Node.js, Java Springboot, and Python FastAPI with SQL polishing. Scope of work covers:
 
 - Design and implementation of RESTful CRUD APIs using Node.js (Express), Java (SpringBoot), and Python (FastAPI)
 - Focus on request validation, error handling, and layered service architecture
 - Integrate SQL-backend persistence with filtering and pagination to support scalable read operations
+
 
 ## Design
 
@@ -130,7 +142,7 @@ The backend server will serve the following endpoints:
     - `404`: "Task not found."
     - `500`: "Internal server error."
 
-### Tech Stack
+## Tech Stack 
 | Layer  | Technology | Purpose | 
 | --- | --- | --- | 
 | Framework | ① Express.js <br> ② Spring Boot <br>  ③ FastAPI | Backend frameworks |
@@ -178,12 +190,11 @@ backend-fundamentals
 
 ```
 
-## Node.js Backend API 
+## Getting Started
+
+### Node.js Backend API 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-
-
-### Getting Started
 
 #### Prerequisites
 - Node.js >= v18.19.1
