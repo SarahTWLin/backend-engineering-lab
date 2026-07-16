@@ -16,13 +16,13 @@ const getTaskList = async (req, res, next) => {
 };
 
 
-const getTask = (req, res, next) => {
+const getTask = async (req, res, next) => {
     try {
-        const taskId = req.params.id;
-        const task = taskControllers.getTaskById(taskId);
+        const { id } = req.params;
+        const task = await taskControllers.getTaskById(id);
 
         res.status(200).send({
-            task: task
+            "task": task
         });
     }
     catch (err) {
