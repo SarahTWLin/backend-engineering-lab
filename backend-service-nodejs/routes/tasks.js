@@ -1,53 +1,12 @@
 const express = require("express");
 const taskRouter = express.Router();
-const taskControllers = require("../controllers/tasks-controller");
 
-taskRouter.get('/', async (req, res, next) => { 
-    
-    try {
-        const taskList = await taskControllers.getTaskList();
+const { getTaskList, getTask, createTask } = require("../controllers/tasks");
 
-        res.status(200).send({
-            tasks: taskList
-        });
-    }
-    catch (err) {
-        next(err);
-    }
-    
-});
-
-
-taskRouter.get("/:id", (req, res, next) => {
-    try {
-        const taskId = req.params.id;
-        const task = taskControllers.getTaskById(taskId);
-
-        res.status(200).send({
-            task: task
-        });
-    }
-    catch (err) {
-        next(err);
-
-    }
-});
-
-taskRouter.post("/", (req, res, next) => {
-    try {
-        const newTask = req.body.task;
-        const newTaskCreated = taskControllers.createTask(task);
-        
-        res.status(200).send({
-            status: "Task created"
-        });
-    }
-    catch (err) {
-        next(err);
-    }
-})
-
+taskRouter.get('/', getTaskList);
+taskRouter.get("/:id", getTask);
+taskRouter.post("/", createTask);
 
 module.exports = [
     taskRouter,
-]
+];

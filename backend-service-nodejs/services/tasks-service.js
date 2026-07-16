@@ -21,10 +21,9 @@ async function getTaskList() {
     return tasks;
 }
 
-function getTaskById(taskId) {
-    const task = getTaskList().find((task) => task.id === taskId);
-    
-    return task;
+async function getTaskById(taskId) {
+    const tasks = await getTaskList();
+    return tasks.find((task) => task.id === taskId);
 }
 
 function createTask(task) {

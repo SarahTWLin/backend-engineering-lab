@@ -1,32 +1,10 @@
 const express = require('express');
 const healthcheckRouter = express.Router();
-const pool = require("../database/db");
 
+const { getApiHealth, getDatabaseHealth } = require('../controllers/healthcheck');
 
-healthcheckRouter.get('/api', (req, res, next) => {
-    try {
-        res.status(200).send({
-            status: "OK"
-        });
-    }
-    catch (err) {
-        next(err); 
-    }
-});
-
-healthcheckRouter.get('/db', async (req, res, next) => {
-    try {
-        const result = await pool.query('SELECT NOW();'); 
-        
-        res.status(200).send({
-            status: "OK",
-            timestamp: result.rows[0].now
-        });
-    }
-    catch(err) {
-        next(err);
-    }
-});
+healthcheckRouter.get('/api', getApiHealth);
+healthcheckRouter.get('/db', getDatabaseHealth);
 
 module.exports = [
     healthcheckRouter
