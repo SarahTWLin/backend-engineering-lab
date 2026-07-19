@@ -1,4 +1,4 @@
-# backend-fundamentals
+# backend-engineering-lab
 
 
 ## Table of Contents
@@ -11,11 +11,28 @@
 
 
 ## About
-Backend engineering with Node.js, Java Springboot, and Python FastAPI with SQL polishing. Scope of work covers:
+Backend Engineering Lab is a hands-on learning project where I implement the same backend concepts across multiple programming languages and frameworks to deepen my understanding of backend software engineering.
 
-- Design and implementation of RESTful CRUD APIs using Node.js (Express), Java (SpringBoot), and Python (FastAPI)
-- Focus on request validation, error handling, and layered service architecture
-- Integrate SQL-backend persistence with filtering and pagination to support scalable read operations
+The goal is not simply to build CRUD APIs, but to practise production-oriented concepts including:
+
+REST API design
+Clean architecture
+Database modelling
+ORM usage
+Docker
+CI/CD pipelines
+Automated testing
+Authentication
+Microservices
+Cloud deployment
+
+## Technology roadmap
+
+- ✅ Node.js (Express)
+- 🚧 Spring Boot
+- 🚧 FastAPI
+- 🚧 Go
+- 🚧 ASP.NET Core
 
 
 ## Design
