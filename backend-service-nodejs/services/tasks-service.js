@@ -1,8 +1,11 @@
+const logger = require('../config/logger');
 const prisma = require('../prisma/prisma');
 const { NotFoundError, BadRequestError } = require('../utils/errors');
 
 async function getTaskList() {
     const tasks = await prisma.task.findMany();
+
+    logger.info("getTaskById(): Return task lists");
     return tasks;
 }
 
@@ -22,6 +25,8 @@ async function getTaskById(taskId) {
         throw new NotFoundError("Task not found");
     }
 
+    logger.info("getTaskById(): Return task");
+
     return task;
 }
 
@@ -36,6 +41,8 @@ async function createTask(task) {
             ...task
         }
     });
+
+    logger.info("createTask(): Task created");
     
     return result;
 }
@@ -51,6 +58,8 @@ async function deleteTask(taskId) {
             id: parseInt(taskId)
         }
     });
+
+    logger.info("deleteTask(): Task deleted");
 
     return results;
 }
