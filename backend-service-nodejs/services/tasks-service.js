@@ -1,4 +1,5 @@
 const prisma = require('../prisma/prisma');
+const { NotFoundError } = require('../utils/errors');
 
 async function getTaskList() {
     const tasks = await prisma.task.findMany();
@@ -12,6 +13,10 @@ async function getTaskById(taskId) {
             id: parseInt(taskId)
         }
     });
+
+    if (!task) {
+        throw new NotFoundError("Task not found");
+    }
 
     return task;
 }
