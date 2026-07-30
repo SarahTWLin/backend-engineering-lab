@@ -50,10 +50,22 @@ jobs:
             sleep 5
           done
 
+      - name: Migrate DB schema
+        working-directory: ./backend-service-node.js
+        run: |
+          npx dotenv -e .env.dev -- npx prisma migrate dev
+          docker compose exec backend npx prisma migrate deploy
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Run tests
         working-directory: backend-service-nodejs
         run: npm test
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Build Docker image
         run: docker build -t backend-service ./backend-service-nodejs
 
