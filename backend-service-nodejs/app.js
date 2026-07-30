@@ -3,6 +3,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 const dotenv = require("dotenv");
 const errorHandler = require("./middleware/error-handle");
+const httpLogger = require("./middleware/http-logger");
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const healthcheckRouter = require("./routes/healthcheck");
 
 app.use(express.json());
 app.use(errorHandler);
+app.use(httpLogger);
 
 app.use(`/tasks/${process.env.VERSION}/`, taskRouter);
 app.use(`/healthcheck/${process.env.VERSION}/`, healthcheckRouter);
