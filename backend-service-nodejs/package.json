@@ -9,7 +9,7 @@
   },
   "jest": {
     "setupFiles": [
-      "../jest.setup.js"
+      "./jest.setup.js"
     ]
   }
   ,
