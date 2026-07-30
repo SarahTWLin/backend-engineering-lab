@@ -54,7 +54,7 @@ jobs:
         working-directory: ./backend-service-nodejs
         run: |
           npx dotenv -e .env.dev -- npx prisma migrate dev
-          docker compose exec backend npx prisma migrate deploy
+          npx prisma migrate deploy
 
   test:
     runs-on: ubuntu-latest
