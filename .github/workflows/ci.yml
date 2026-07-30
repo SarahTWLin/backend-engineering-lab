@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -56,45 +56,15 @@ jobs:
           npx dotenv -e .env.dev -- npx prisma migrate dev
           npx prisma migrate deploy
 
+      - name: Run tests
+        working-directory: backend-service-nodejs
+        run: npm test
+      
       - name: Upload repository
         uses: actions/upload-artifact@v4
         with:
           name: source-code
           path: .
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-
-      - name: Download repository
-        uses: actions/download-artifact@v4
-        with:
-          name: source-code
-
-      - name: Report running containers
-        run: docker ps
-
-      - name: Install dependencies
-        working-directory: ./backend-service-nodejs
-        run: npm install
-
-      - name: Generate prisma client
-        working-directory: ./backend-service-nodejs
-        run: npx prisma generate
-
-      - name: Create env file
-        run: |
-          echo "DB_USER=${{ secrets.DB_USER }}" >> backend-service-nodejs/.env
-          echo "DB_PASS=${{ secrets.DB_PASS }}" >> backend-service-nodejs/.env
-          echo "DB_NAME=${{ secrets.DB_NAME }}" >> backend-service-nodejs/.env
-          echo "DB_PORT=${{ secrets.DB_PORT }}" >> backend-service-nodejs/.env
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> backend-service-nodejs/.env
-
-
-      - name: Run tests
-        working-directory: backend-service-nodejs
-        run: npm test
 
   deploy:
     runs-on: ubuntu-latest
