@@ -2,6 +2,6 @@ const path = require('path');
 const dotenv = require("dotenv");
 
 dotenv.config({
-    path:  path.resolve(__dirname, '.env.dev'),
+    path:  path.resolve(__dirname, '.env'),
     override: true
 });
