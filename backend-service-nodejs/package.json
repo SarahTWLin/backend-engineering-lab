@@ -7,6 +7,12 @@
     "test": "jest",
     "start": "node --env-file=.env.dev index.js"
   },
+  "jest": {
+    "setupFiles": [
+      "../jest.setup.js"
+    ]
+  }
+  ,
   "keywords": [],
   "author": "",
   "license": "ISC",
