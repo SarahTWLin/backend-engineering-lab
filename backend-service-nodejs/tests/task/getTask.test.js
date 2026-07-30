@@ -10,6 +10,7 @@ describe("GET Task endpoint", () => {
         
         const response = await request(app).get(`/tasks/${process.env.VERSION}`);
 
+        console.log(response.text)
         expect(Array.isArray(response.body.tasks)).toBe(true);
 
         if (response.body.tasks.length > 0) {
