@@ -1,6 +1,7 @@
 const path = require('path');
+const dotenv = require("dotenv");
 
-require("dotenv").config({
+dotenv.config({
     path:  path.resolve(__dirname, 'backend-service-nodejs/.env.dev'),
     override: true
 });
