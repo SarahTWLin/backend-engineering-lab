@@ -56,12 +56,10 @@ jobs:
           npx dotenv -e .env.dev -- npx prisma migrate dev
           npx prisma migrate deploy
 
-    steps:
       - name: Run tests
         working-directory: backend-service-nodejs
         run: npm test
-        
-    steps:
+
       - name: Build Docker image
         run: docker build -t backend-service ./backend-service-nodejs
 
