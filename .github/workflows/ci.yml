@@ -60,20 +60,27 @@ jobs:
         working-directory: backend-service-nodejs
         run: npm test
       
-      - name: Upload repository
-        uses: actions/upload-artifact@v4
-        with:
-          name: source-code
-          path: .
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Download repository
-        uses: actions/download-artifact@v4
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          name: source-code
+          node-version: 22
+
+      - name: Create env file
+        run: |
+          echo "DB_USER=${{ secrets.DB_USER }}" >> backend-service-nodejs/.env
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> backend-service-nodejs/.env
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> backend-service-nodejs/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> backend-service-nodejs/.env
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> backend-service-nodejs/.env
 
       - name: Build Docker image
         run: docker build -t backend-service ./backend-service-nodejs
