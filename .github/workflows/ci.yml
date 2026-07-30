@@ -72,6 +72,13 @@ jobs:
         with:
           name: source-code
 
+      - name: Report running containers
+        run: docker ps
+
+      - name: Install dependencies
+        working-directory: ./backend-service-nodejs
+        run: npm install
+
       - name: Run tests
         working-directory: backend-service-nodejs
         run: npm test
